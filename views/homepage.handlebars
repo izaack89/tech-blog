@@ -1,22 +1,19 @@
-
-<div class="row p-5 ">
-    <div class="col-sm-12">
-        {{#each posts as |post| }}
-        <div class="card">
-            <div class="card-header">
-              <a href="/api/post/{{id}}"  class="text-reset text-decoration-none">{{title}} <span class="badge bg-secondary position-absolute top-10 end-0">5/06/2021</span></a>
-            </div>
+<div class="row p-5">
+  <div class="col-sm-12">
+    {{#each posts as |post|}}
+      <div class="card">
+        <div class="card-header custom-text-color">
+          <a
+            href="/post/{{id}}"
+            class="text-reset text-decoration-none"
+          >{{title}} </a>
+          <span style="float: right;">Posted by {{user.username}} on {{format_date  created_date}}</span>
         </div>
-        {{/each}}
-    </div>
-</div>
-<div class="row p-3 ">
-    <div class="col-sm-4">&nbsp;</div>
-    <div class="col-sm-4">
-        <div class="row">
-            <a class="btn bbtn-block btn-primary custom-background-color capitalize" href="/api/new-post">+ New Post</a>
+        <div class="card-body">
+          <p class="card-text">{{content}}</p>
         </div>
-    </div>
-    <div class="col-sm-4">&nbsp;</div>
+      </div>
+      <div>&nbsp;</div>
+    {{/each}}
+  </div>
 </div>
-
