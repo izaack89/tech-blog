@@ -13,15 +13,29 @@
       </div>
       <div>&nbsp;</div>
 
+    {{#each comments as |comment|}}
+      <div class="card">
+        <div class="card-header custom-text-color">
+          <span style="float: right;">-By {{comment.user.username}} on {{format_date posted_date}}</span>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{comment.comment}}</p>
+        </div>
+      </div>
+      <div>&nbsp;</div>
+    {{/each}}
       <div class="card">
         <div class="card-header">&nbsp;</div>
         <div class="card-body">
-            <p class="card-text">Comment</p>
-            <textarea class="form-control" id="comments" rows="3"></textarea>
-            <br>
-            <div class="d-grid gap-2">
-                <button class="btn btn-block btn-primary custom-background-color capitalize">Submit</button>
-            </div>
+            <form   id="comment-form"> 
+                <input type="hidden" value="{{ postInfo.id }}" id="postId">
+                <p class="card-text">Comment</p>
+                <textarea class="form-control" id="comments" rows="3"></textarea>
+                <br>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-block btn-primary custom-background-color capitalize">Submit</button>
+                </div>
+            </form>
         </div>
       </div>
   </div>

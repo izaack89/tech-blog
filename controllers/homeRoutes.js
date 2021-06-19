@@ -50,10 +50,18 @@ router.get('/signup', (req, res) => {
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.params.id);
-
     const postInfo = dbPostData.get({ plain: true });
-    console.log(postInfo)
-    res.render('post', { postInfo, loggedIn: req.session.loggedIn });
+
+    const commentData = await Comment.findAll(
+      { where: 
+        { user_id: req.session.user_id,post_id:req.params.id } ,
+        include:[{model: User}]
+      }
+      );
+    const comments = commentData.map((comment) =>
+      comment.get({ plain: true })
+    );
+    res.render('post', { postInfo, comments,loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -64,15 +72,13 @@ router.get('/post/:id', withAuth, async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({ where: { user_id: req.session.user_id } });
-    console.log(postData,req.session.user_id)
     const posts = postData.map((postInfo) =>
       postInfo.get({ plain: true })
     );
-    console.log(posts)
     res.render('dashboard', {
       posts,
       logged_in: req.session.logged_in,
-      homeLink:" active "
+      dashboardLink:" active "
     });
   } catch (err) {
     res.status(500).json(err);
