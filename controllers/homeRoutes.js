@@ -60,6 +60,25 @@ router.get('/post/:id', withAuth, async (req, res) => {
   }
 });
 
+
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({ where: { user_id: req.session.user_id } });
+    console.log(postData,req.session.user_id)
+    const posts = postData.map((postInfo) =>
+      postInfo.get({ plain: true })
+    );
+    console.log(posts)
+    res.render('dashboard', {
+      posts,
+      logged_in: req.session.logged_in,
+      homeLink:" active "
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
