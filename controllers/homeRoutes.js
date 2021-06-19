@@ -13,6 +13,7 @@ router.get('/', withAuth, async (req, res) => {
     res.render('homepage', {
       posts,
       logged_in: req.session.logged_in,
+      homeLink:" active "
     });
   } catch (err) {
     res.status(500).json(err);
@@ -25,7 +26,9 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login',{
+    loginLink:" active "
+  });
 });
 
 
@@ -35,7 +38,9 @@ router.get('/signup', (req, res) => {
     return;
   }
 
-  res.render('signup');
+  res.render('signup',{
+    loginLink:" active "
+  });
 });
 
 module.exports = router;

@@ -30,16 +30,16 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                        <a class="nav-link {{homeLink}}" aria-current="page" href="/home">Home</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/dashboard">Dashboard</a>
+                        <a class="nav-link {{dashboardLink}}" aria-current="page" href="/dashboard">Dashboard</a>
                       </li>
-                      {{#if logged_in}}
+                      {{#unless logged_in}}
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/login">Login</a>
+                        <a class="nav-link {{loginLink}}" aria-current="page" href="/login">Login</a>
                       </li>
-                      {{/if}}
+                      {{/unless}}
                       {{#if logged_in}}
                       <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/logout">Logout</a>
