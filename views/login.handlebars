@@ -1,7 +1,8 @@
 
-<div class="row p-5 ">
-    <div class="col-sm-12">
-        <form>
+<div class="row p-5">
+  <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <form class="border border-dark border-5 p-5 rounded"  id="loginButton">
             <h2 class="custom-text-color ">Login</h2>
             <div class="mb-3">
                 <label for="email-login" class="form-label">Email</label>
@@ -9,11 +10,15 @@
             </div>
             <div class="mb-3">
                 <label for="password-login" class="form-label">Password</label>
-                <input class="form-input" type="password" id="password-login" />
+                <input  class="form-control" type="password" id="password-login" />
             </div>
-            <button type="submit" class="btn btn-primary custom-background-color capitalize">Submit</button>
+            <button type="submit" class="btn btn-primary custom-background-color capitalize">Login</button>
+            <br>
+            <br>
+            <a href="/signup">Sign up instead</a>
         </form>
     </div>
+    <div class="col-sm-2"></div>
 </div>
 
-<script src="/js/login.js"></script>
+<script src="/assets/js/login.js"></script>
