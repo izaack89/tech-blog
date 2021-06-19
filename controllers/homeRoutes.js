@@ -15,7 +15,8 @@ router.get('/', withAuth, async (req, res) => {
     res.render('homepage', {
       posts,
       logged_in: req.session.logged_in,
-      homeLink:" active "
+      homeLink:" active ",
+      titleHead:'Tech Blog'
     });
   } catch (err) {
     res.status(500).json(err);
@@ -61,13 +62,48 @@ router.get('/post/:id', withAuth, async (req, res) => {
     const comments = commentData.map((comment) =>
       comment.get({ plain: true })
     );
-    res.render('post', { postInfo, comments,loggedIn: req.session.loggedIn });
+    res.render('post', { 
+      postInfo, 
+      comments,
+      loggedIn: req.session.loggedIn,
+      homeLink:" active ",
+      titleHead:'Tech Blog' });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
+
+// GET one post
+router.get('/new-post', withAuth, async (req, res) => {
+  try {
+    
+    res.render('partials/add-post', { 
+      loggedIn: req.session.loggedIn,
+      dashboardLink:" active ",
+      titleHead:'Your Dashboard' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/edit-post/:id', withAuth, async (req, res) => {
+  try {
+    const dbPostData = await Post.findByPk(req.params.id);
+    const postInfo = dbPostData.get({ plain: true });
+    
+    res.render('partials/edit-post', { 
+      postInfo, 
+      loggedIn: req.session.loggedIn,
+      dashboardLink:" active ",
+      titleHead:'Your Dashboard' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
@@ -78,7 +114,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('dashboard', {
       posts,
       logged_in: req.session.logged_in,
-      dashboardLink:" active "
+      dashboardLink:" active ",
+      titleHead:'Your Dashboard'
     });
   } catch (err) {
     res.status(500).json(err);

@@ -24,7 +24,7 @@ Post.init(
     created_date: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: sequelize.NOW
+      defaultValue: sequelize.fn('NOW')
     },
     user_id: {
       type: DataTypes.INTEGER,
