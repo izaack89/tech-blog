@@ -36,7 +36,7 @@ And execute the queries of schema.sql this will create the schema
 
 ## [Tech Blog GitHub Code](https://github.com/izaack89/tech-blog)
 
-## [Tech Blog Live](https://izaack89.github.io/tech-blog/index.html)
+## [Tech Blog Live](https://floating-garden-59968.herokuapp.com/)
 
 ## Tech Blog References
 
