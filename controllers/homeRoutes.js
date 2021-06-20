@@ -30,7 +30,8 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login',{
-    loginLink:" active "
+    loginLink:" active ",
+    titleHead:'Tech Blog'
   });
 });
 
@@ -42,7 +43,8 @@ router.get('/signup', (req, res) => {
   }
 
   res.render('signup',{
-    loginLink:" active "
+    loginLink:" active ",
+    titleHead:'Tech Blog'
   });
 });
 
